@@ -2,7 +2,9 @@
 
 square_for <- function(x){
   # [ToDo] Use the for loop
-  
+  tot <- 0
+  for (i in seq(along=x)){tot <- tot + x[i]^2}
+  return(tot)
 }
 
 square_sapply <- function(x){
