@@ -33,4 +33,4 @@ identical(square_for(x), square_vec2(x))
 
 # [ToDo] Use microbenchmark package to compare three functions in terms of speed
 library(microbenchmark)
-microbenchmark(square_for(x), square_sapply(x), square_vec(x), square_vec2(x))
+microbenchmark(square_for(x), square_sapply(x), square_vec(x), square_vec2(x),x**2)
