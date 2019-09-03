@@ -27,7 +27,10 @@ square_vec2 <- function(x){
 x <- rnorm(100000)
 
 # [ToDo] Verify that all functions return the same output
-identical(square_for(x), square_sapply(x), square_vec(x), square_vec2(x))
+identical(square_for(x), square_sapply(x))
+identical(square_vec(x), square_vec2(x))
+identical(square_for(x), square_vec2(x))
+
 # [ToDo] Use microbenchmark package to compare three functions in terms of speed
 library(microbenchmark)
 microbenchmark(square_for(x), square_sapply(x), square_vec(x), square_vec2(x))
