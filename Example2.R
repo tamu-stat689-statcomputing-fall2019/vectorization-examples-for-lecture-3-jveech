@@ -12,16 +12,22 @@ require(mnormt) # for multivariate normal data generation
 # ypred - predicted class membership
 # error - percent of misclassified observations
 
-classify_for <- function(beta, xtrain, ytrain, xtest, ytest){
+classify_for <- function(beta, xtrain, ytrain, xtest, ytest) {
   # [ToDo] Code discriminant analysis classifier using for loop
   
   # Calculate sample means based on training data
- 
+  x_bar1 <- colMeans(xtrain[ytrain==1,])
+  x_bar2 <- colMeans(xtrain[ytrain==2,])
   
   # Calculate class assignments for xtest in a for loop
-  
+  n <- dim(xtrain)[1]
+  ypred <- seq(1:n)
+  for (i in seq(1:n)) {
+    ypred[i] <-  which.min(c((crossprod(xtest[i,],beta) - crossprod(x_bar1,beta))^2,
+                             (crossprod(xtest[i,],beta) - crossprod(x_bar2,beta))^2))
+  }
   # Calculate % error using ytest
-
+  error <- sum(abs(ypred-ytest))/n
   # Return predictions and error
   return(list(ypred = ypred, error = error))
 }
